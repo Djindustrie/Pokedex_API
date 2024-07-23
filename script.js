@@ -49,6 +49,10 @@ async function loadData() {
   renderPokemonCart(results);
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 async function renderPokemonCart(results) {
   let content = document.getElementById("pokemonCard");
   content.innerHTML = '';
@@ -58,18 +62,21 @@ async function renderPokemonCart(results) {
     let pokemonData = await fetch(result.url);
     let pokemonJson = await pokemonData.json();
     let pokemonSprite = pokemonJson.sprites.front_default;
-    let pokemonTypes = pokemonJson.types.map(typeInfo => typeInfo.type.name)
-    console.log(pokemonTypes);
+    let pokemonTypes = pokemonJson.types.map(typeInfo => capitalizeFirstLetter(typeInfo.type.name));
+    let pokemonName = capitalizeFirstLetter(result['name']);
+    let typesHtml = '';
+    pokemonTypes.forEach(type => {
+      typesHtml += `<div class="pokemonCardUnderTyp fontNormel">${type}</div>`;
+    });
 
     content.innerHTML += /*HTML*/ `
       <div class="pokemonCard">
         <div>
-          <h2 class="h2">${result['name']}</h2>
+          <h2 class="h2">${pokemonName}</h2>
         </div>
         <div class="pokemonCardUnderPart">
-          <div>
-            <div class="pokemonCardUnderTyp fontNormel">${pokemonTypes[0]}</div>
-            <div class="pokemonCardUnderTyp fontNormel">${pokemonTypes[1]}</div>
+          <div id="pokemonCardUnderTyp">
+          ${typesHtml}
           </div>
           <img id="pokemonSprite${i}" src="${pokemonSprite}" alt="Pokemon Sprite">
         </div>
@@ -79,7 +86,7 @@ async function renderPokemonCart(results) {
   }
 }
 
-// onload Funktion
+// Aufruf der loadData Funktion
 
 function onloadFunc() {
   loadData();
