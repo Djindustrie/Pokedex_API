@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
 </head>
+
 <body onload="onloadFunc()">
-    
+
     <header>
         <div class="headerLeftPart">
             <img class="icon" src="img/icon/pokemon-icon.png" alt="">
             <h1 class="h1">Pokedex</h1>
         </div>
         <div>
-            <input id="pokemonName" class="inputSearch" type="text" placeholder="Pokemon Name" onkeyup="searchPokemonName(event)">
+            <input id="pokemonName" class="inputSearch" type="text" placeholder="Pokemon Name"
+                onkeyup="searchPokemonName(event)">
         </div>
     </header>
 
-    <div class="contentBasis">
-        <div class="pokemonCart">
-            <div>
-
-            </div>
-            <div>
-                <img id="pokemonSprite" src="" alt="Pokemon Sprite">
-            </div>
-            <div>
-
-            </div>
-        </div>
-    </div>
+    <div id="pokemonCard" class="contentBasis"></div>
 
     <footer>
         <h2 class="h2">Presented by <br>Djindustrie</h2>
@@ -39,4 +31,5 @@
 
 </body>
 <script src="script.js"></script>
+
 </html>
