@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="fonts.css">
 </head>
 
-<body onload="onloadFunc()">
+<body class="" onload="getContent()">
 
     <header>
         <div class="headerLeftPart">
@@ -22,7 +22,10 @@
         </div>
     </header>
 
-    <div id="pokemonCard" class="contentBasis"></div>
+    <div class="basisContener">
+        <div id="pokemonCard" class="contentBasis"></div>
+        <button id="loadMoreBtn" class="morePokemon" onclick="loadMorePokemon()">Load More</button>
+    </div>
 
     <footer>
         <h2 class="h2">Presented by <br>Djindustrie</h2>
