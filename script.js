@@ -23,14 +23,16 @@ async function pokemonDataToJarray(results) {
     let pokedexNumber = speciesJson.id;
     let pokemonName = capitalizeFirstLetter(result["name"]);
     let pokemonType = pokemonJson.types.map((typeInfo) =>
-      test(typeInfo.type.name));
+      test(typeInfo.type.name)
+    );
     let pokemonTypes = pokemonJson.types.map((typeInfo) =>
-      capitalizeFirstLetter(typeInfo.type.name));
+      capitalizeFirstLetter(typeInfo.type.name)
+    );
     let typesHtml = "";
     pokemonType.forEach((type) => {
       typesHtml += `<div class="pokemonCardUnderTyp typFont ${type}">${type}</div>`;
     });
-    
+
     pokemonArray.push({
       sprite: pokemonSprite,
       pokedexNumber: pokedexNumber,
@@ -42,7 +44,7 @@ async function pokemonDataToJarray(results) {
   }
   renderPokemonCart();
 }
-function test(sting){
+function test(sting) {
   return sting;
 }
 
@@ -56,21 +58,7 @@ function renderPokemonCart() {
   for (let i = 0; i < pokemonArray.length; i++) {
     const pokemon = pokemonArray[i];
 
-    content.innerHTML += /*HTML*/ `
-          <div class="pokemonCard ${pokemon["type"][0]}">
-        <div class="pokemonCardUpPart">
-        <h2 class="pokedexNumberFont"># ${pokemon["pokedexNumber"]}</h2>
-          <h2 class="h2">${pokemon["name"]}</h2>
-        </div>
-        <div class="pokemonCardUnderPart">
-          <div>
-          ${pokemon["typesHtml"]}
-          </div>
-          <img id="pokemonSprite${i}" src="${pokemon["sprite"]}" alt="Pokemon Sprite">
-        </div>
-        <div></div>
-      </div>
-    `;
+    content.innerHTML += templeatRenderPokemonCart(pokemon, i);
   }
 }
 
