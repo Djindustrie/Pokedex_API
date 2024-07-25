@@ -49,75 +49,75 @@ body {
 
 /* Type Colors*/
 
-.Bug {
+.bug {
   background-color: #a8b820;
 }
 
-.Dark {
+.dark {
   background-color: #705848;
 }
 
-.Dragon {
+.dragon {
   background-color: #7038f8;
 }
 
-.Electric {
+.electric {
   background-color: #f8d030;
 }
 
-.Fairy {
+.fairy {
   background-color: #ee99ac;
 }
 
-.Fighting {
+.fighting {
   background-color: #C03028;
 }
 
-.Fire {
+.fire {
   background-color: #F08030;
 }
 
-.Flying {
+.flying {
   background-color: #A890F0;
 }
 
-.Ghost {
+.ghost {
   background-color: #705898;
 }
 
-.Grass {
+.grass {
   background-color: #78C850;
 }
 
-.Ground {
+.ground {
   background-color: #E0C068;
 }
 
-.Ice {
+.ice {
   background-color: #98D8D8;
 }
 
-.Normal {
+.normal {
   background-color: #A8A878;
 }
 
-.Poison {
+.poison {
   background-color: #A040A0;
 }
 
-.Psychic {
+.psychic {
   background-color: #F85888;
 }
 
-.Rock {
+.rock {
   background-color: #B8A038;
 }
 
-.Steel {
+.steel {
   background-color: #B8B8D0;
 }
 
-.Water {
+.water {
   background-color: #6890F0;
 }
 
@@ -195,8 +195,7 @@ footer {
   margin: 8px;
   padding: 6px 12px 6px 12px;
   border-radius: 12px;
-  background-color: #00000042;
-  box-shadow: 4px 4px 10px 2px #00000029;
+  box-shadow: inset 17px 20px 20px 20px rgba(0, 0, 0, 0.141), 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
 }
 
 .morePokemon {
@@ -237,6 +236,6 @@ footer {
   margin: 12px;
   padding: 12px;
   border-radius: 8px;
-  box-shadow: 8px 8px 10px 2px #000000b2;
+  box-shadow: 8px 8px 10px 2px rgba(0, 0, 0, 0.698);
   background-color: brown;
 }
