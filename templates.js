@@ -1,5 +1,5 @@
 function templeatRenderPokemonCart(pokemon, i) {
-  return `<div class="pokemonCard ${pokemon["type"][0]}">
+  return `<div class="pokemonCard ${pokemon["type"][0]}" onclick="toggleOverlay()">
                 <div class="pokemonCardUpPart">
                     <h2 class="pokedexNumberFont"># ${pokemon["pokedexNumber"]}</h2>
                     <h2 class="h2">${pokemon["name"]}</h2>

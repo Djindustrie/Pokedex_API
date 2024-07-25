@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="fonts.css">
 </head>
 
-<body class="" onload="getContent()">
+<body id="myBody" class="" onload="getContent()">
 
     <header>
         <div class="headerLeftPart">
@@ -26,6 +26,8 @@
         <div id="pokemonCard" class="contentBasis"></div>
         <button class="morePokemon" onclick="loadMorePokemon()">Load More</button>
     </div>
+
+    <div id="overlay" class="overlay d-none" onclick="toggleOverlay()"></div>
 
     <footer>
         <h2 class="h2">Presented by <br>Djindustrie</h2>

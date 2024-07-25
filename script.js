@@ -62,6 +62,14 @@ function renderPokemonCart() {
   }
 }
 
+function toggleOverlay(){
+  let OverlayRef = document.getElementById("overlay");
+  let bodyRef = document.getElementById('myBody');
+
+  OverlayRef.classList.toggle('d-none');
+  bodyRef.classList.toggle('no-scroll');
+}
+
 function loadMorePokemon() {
   limit += 20;
   getContent();
