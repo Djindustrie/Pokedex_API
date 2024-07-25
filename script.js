@@ -32,6 +32,29 @@ async function pokemonDataToJarray(results) {
     pokemonType.forEach((type) => {
       typesHtml += `<div class="pokemonCardUnderTyp typFont ${type}">${type}</div>`;
     });
+    let stats = pokemonJson.stats.reduce((acc, stat) => {
+      switch (stat.stat.name) {
+        case 'hp':
+          acc.hp = stat.base_stat;
+          break;
+        case 'attack':
+          acc.attack = stat.base_stat;
+          break;
+        case 'defense':
+          acc.defense = stat.base_stat;
+          break;
+        case 'special-attack':
+          acc.specialAttack = stat.base_stat;
+          break;
+        case 'special-defense':
+          acc.specialDefense = stat.base_stat;
+          break;
+        case 'speed':
+          acc.speed = stat.base_stat;
+          break;
+      }
+      return acc;
+    }, {});
 
     pokemonArray.push({
       sprite: pokemonSprite,
@@ -40,6 +63,7 @@ async function pokemonDataToJarray(results) {
       type: pokemonType,
       types: pokemonTypes,
       typesHtml: typesHtml,
+      stats: stats,
     });
   }
   renderPokemonCart();
@@ -59,7 +83,7 @@ function renderPokemonCart() {
     const pokemon = pokemonArray[i];
 
     content.innerHTML += `
-    <div class="pokemonCard ${pokemon["type"][0]}" onclick="toggleOverlay(${pokemon.pokedexNumber}, '${pokemon.name}', '${pokemon.sprite}', '${pokemon.type.join(' ,')}')">
+    <div class="pokemonCard ${pokemon["type"][0]}" onclick="toggleOverlay(${pokemon.pokedexNumber}, '${pokemon.name}', '${pokemon.sprite}', '${pokemon.type.join(' ,')}', '${pokemon.stats.attack}','${pokemon.stats.defense}','${pokemon.stats.hp}', '${pokemon.stats.specialAttack}','${pokemon.stats.specialDefense}','${pokemon.stats.speed}')">
       <div class="pokemonCardUpPart">
         <h2 class="pokedexNumberFont"># ${pokemon["pokedexNumber"]}</h2>
         <h2 class="h2">${pokemon["name"]}</h2>
@@ -74,7 +98,7 @@ function renderPokemonCart() {
   }
 }
 
-function toggleOverlay(pokedexNumber, name, sprite, type, ) {
+function toggleOverlay(pokedexNumber, name, sprite, type, attack, defense, hp, specialAttack, specialDefense, speed) {
   let OverlayRef = document.getElementById("overlay");
   let bodyRef = document.getElementById("myBody");
   OverlayRef.classList.toggle("d-none");
@@ -84,7 +108,7 @@ function toggleOverlay(pokedexNumber, name, sprite, type, ) {
   let typesHtml = typesArray.map(type => `<div class="pokemonCardUnderTyp typFont ${type}">${type}</div>`).join("");
 
   OverlayRef.innerHTML = "";
-  OverlayRef.innerHTML = overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type);
+  OverlayRef.innerHTML = overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type, attack, defense, hp, specialAttack, specialDefense, speed);
 }
 
 function logDownWBubblingProtection(event){

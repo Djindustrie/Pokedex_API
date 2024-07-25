@@ -13,7 +13,7 @@ function templeatRenderPokemonCart(pokemon, i) {
             </div>`;
 }
 
-function overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type) {
+function overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type, attack, defense, hp, specialAttack, specialDefense, speed) {
   return `
     <div onclick="logDownWBubblingProtection(event)" class="overlayContent ${type}">
       <div class="overlayCardUpPart">
@@ -26,6 +26,15 @@ function overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type) {
         </div>
         <img src="${sprite}" alt="Pokemon Sprite">
       </div>
-      <div class="overlayCardBottunTyp"></div>
+      <div class="overlayCardBottunTyp">
+      <div>
+        <p>HP: ${hp}</p>
+        <p>Attack: ${attack}</p>
+        <p>Defense: ${defense}</p>
+        <p>Special Attack: ${specialAttack}</p>
+        <p>Special Defense: ${specialDefense}</p>
+        <p>Speed: ${speed}</p>
+      </div>
+      </div>
     </div>`;
 }
