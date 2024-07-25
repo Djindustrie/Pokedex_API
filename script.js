@@ -8,7 +8,7 @@ async function getContent() {
   let response = await fetch(url);
   let responseAsJson = await response.json();
   let results = responseAsJson["results"];
-  endPoint += +20;
+  endPoint += 20;
   pokemonDataToJarray(results);
 }
 
@@ -44,8 +44,8 @@ async function pokemonDataToJarray(results) {
   }
   renderPokemonCart();
 }
-function test(sting) {
-  return sting;
+function test(string) {
+  return string;
 }
 
 function capitalizeFirstLetter(string) {
@@ -58,16 +58,37 @@ function renderPokemonCart() {
   for (let i = 0; i < pokemonArray.length; i++) {
     const pokemon = pokemonArray[i];
 
-    content.innerHTML += templeatRenderPokemonCart(pokemon, i);
+    content.innerHTML += `
+    <div class="pokemonCard ${pokemon["type"][0]}" onclick="toggleOverlay(${pokemon.pokedexNumber}, '${pokemon.name}', '${pokemon.sprite}', '${pokemon.type.join(' ,')}')">
+      <div class="pokemonCardUpPart">
+        <h2 class="pokedexNumberFont"># ${pokemon["pokedexNumber"]}</h2>
+        <h2 class="h2">${pokemon["name"]}</h2>
+      </div>
+      <div class="pokemonCardUnderPart">
+        <div>
+          ${pokemon["typesHtml"]}
+        </div>
+        <img id="pokemonSprite${i}" src="${pokemon["sprite"]}" alt="Pokemon Sprite">
+      </div>
+    </div>`;
   }
 }
 
-function toggleOverlay(){
+function toggleOverlay(pokedexNumber, name, sprite, type, ) {
   let OverlayRef = document.getElementById("overlay");
-  let bodyRef = document.getElementById('myBody');
+  let bodyRef = document.getElementById("myBody");
+  OverlayRef.classList.toggle("d-none");
+  bodyRef.classList.toggle("no-scroll");
 
-  OverlayRef.classList.toggle('d-none');
-  bodyRef.classList.toggle('no-scroll');
+  let typesArray = type.split(',');
+  let typesHtml = typesArray.map(type => `<div class="pokemonCardUnderTyp typFont ${type}">${type}</div>`).join("");
+
+  OverlayRef.innerHTML = "";
+  OverlayRef.innerHTML = overlayPokemonContent(pokedexNumber, name, sprite, typesHtml, type);
+}
+
+function logDownWBubblingProtection(event){
+  event.stopPropagation()
 }
 
 function loadMorePokemon() {

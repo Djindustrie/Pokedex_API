@@ -70,15 +70,15 @@ body {
 }
 
 .fighting {
-  background-color: #C03028;
+  background-color: #c03028;
 }
 
 .fire {
-  background-color: #F08030;
+  background-color: #f08030;
 }
 
 .flying {
-  background-color: #A890F0;
+  background-color: #a890f0;
 }
 
 .ghost {
@@ -86,39 +86,39 @@ body {
 }
 
 .grass {
-  background-color: #78C850;
+  background-color: #78c850;
 }
 
 .ground {
-  background-color: #E0C068;
+  background-color: #e0c068;
 }
 
 .ice {
-  background-color: #98D8D8;
+  background-color: #98d8d8;
 }
 
 .normal {
-  background-color: #A8A878;
+  background-color: #a8a878;
 }
 
 .poison {
-  background-color: #A040A0;
+  background-color: #a040a0;
 }
 
 .psychic {
-  background-color: #F85888;
+  background-color: #f85888;
 }
 
 .rock {
-  background-color: #B8A038;
+  background-color: #b8a038;
 }
 
 .steel {
-  background-color: #B8B8D0;
+  background-color: #b8b8d0;
 }
 
 .water {
-  background-color: #6890F0;
+  background-color: #6890f0;
 }
 
 /* header */
@@ -195,7 +195,8 @@ footer {
   margin: 8px;
   padding: 6px 12px 6px 12px;
   border-radius: 12px;
-  box-shadow: inset 17px 20px 20px 20px rgba(0, 0, 0, 0.141), 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 17px 20px 20px 20px rgba(0, 0, 0, 0.141),
+    0px 0px 8px 3px rgba(0, 0, 0, 0.3);
 }
 
 .morePokemon {
@@ -217,6 +218,10 @@ footer {
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.253);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .d-none {
@@ -232,10 +237,37 @@ footer {
   flex-direction: column;
   align-items: center;
   height: 50vh;
-  width: 30vw;
+  width: 40%;
   margin: 12px;
-  padding: 12px;
-  border-radius: 8px;
+  border-radius: 24px;
   box-shadow: 8px 8px 10px 2px rgba(0, 0, 0, 0.698);
-  background-color: brown;
+
+}
+
+.overlayCardUpPart {
+  width: 85%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.overlayCardMidPart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin-bottom: 12px;
+}
+
+.overlayCardTyp {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlayCardBottunTyp {
+  background-color: white;
+  height: 75%;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: inset 8px 8px 3px 0px rgba(0, 0, 0, 0.141);
 }
