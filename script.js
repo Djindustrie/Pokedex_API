@@ -15,6 +15,11 @@ async function getContent(){
 async function pokemonDataGrab(results){
   for (let i = 0; i < limit; i++) {
     const result = results[i];
+
+    if (pokemonArray.some(pokemon => pokemon.name.toLowerCase() === result.name.toLowerCase())) {
+      continue;
+    }
+
     let pokemonData = await fetch(result.url);
     let pokemonJson = await pokemonData.json();
     let pokemonSprite = pokemonJson.sprites.front_default;
@@ -55,7 +60,7 @@ function renderPokemonCart(){
     const pokemon = pokemonArray[i];
 
     content.innerHTML += /*HTML*/ `
-          <div onclick="toggleOverlay()" class="pokemonCard ${pokemon['types'][0]}">
+          <div class="pokemonCard ${pokemon['types'][0]}">
         <div class="pokemonCardUpPart">
         <h2 class="pokedexNumberFont"># ${pokemon['pokedexNumber']}</h2>
           <h2 class="h2">${pokemon['name']}</h2>
@@ -69,7 +74,10 @@ function renderPokemonCart(){
         <div></div>
       </div>
     `;
-
-    console.log(pokemon);
   }
+}
+
+function loadMorePokemon(){
+  limit += 20;
+  getContent();
 }
