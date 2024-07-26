@@ -15,7 +15,7 @@ function pokemonCardTemplate(pokemon, index) {
 
 function overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats) {
   return `
-   <div class="overlayContent ${primaryType}">
+   <div class="overlayContent ${primaryType} onclick="bubblingProtection(event)">
       <div class="overlayCardUpPart">
         <h2 class="pokedexNumberFont"># ${pokedexNumber}</h2>
         <h2 class="h2">${name}</h2>

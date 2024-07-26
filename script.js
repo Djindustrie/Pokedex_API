@@ -1,5 +1,6 @@
 let url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0.";
 let pokemonArray = [];
+let currentPokemons = [];
 let limit = 0;
 let endPoint = 0;
 
@@ -19,7 +20,7 @@ async function processPokemonData(results) {
     let pokemon = createPokemonObject(pokemonData, speciesData, result.name);
     pokemonArray.push(pokemon);
   }
-  renderPokemonCart();
+  init();
 }
 
 async function fetchPokemonData(url) {
@@ -39,7 +40,7 @@ function createPokemonObject(pokemonData, speciesData, name) {
   let pokedexNumber = speciesData.id;
   let pokemonName = capitalizeFirstLetter(name);
   let pokemonType = pokemonData.types.map((typeInfo) =>
-    test(typeInfo.type.name)
+    typsNames(typeInfo.type.name)
   );
   let typesHtml = generateTypesHtml(pokemonType);
   let stats = extractStats(pokemonData.stats);
@@ -91,7 +92,7 @@ function mapStatToKeyValue(statName) {
   }
 }
 
-function test(string) {
+function typsNames(string) {
   return string;
 }
 
@@ -101,7 +102,7 @@ function capitalizeFirstLetter(string) {
 
 function renderPokemonCart() {
   let content = document.getElementById("pokemonCard");
-  content.innerHTML = pokemonArray
+  content.innerHTML = currentPokemons
     .map((pokemon, i) => pokemonCardTemplate(pokemon, i))
     .join("");
 }
@@ -124,7 +125,7 @@ function toggleOverlay(index) {
   OverlayRef.innerHTML = overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats);
 }
 
-function logDownWBubblingProtection(event) {
+function bubblingProtection(event) {
   event.stopPropagation();
 }
 
@@ -137,6 +138,27 @@ function previousPokemon(index) {
 function nextPokemon(index) {
   if (index < pokemonArray.length - 1) {
     toggleOverlay(index + 1);
+  }
+}
+
+function init() {
+  currentPokemons = pokemonArray;
+  renderPokemonCart();
+}
+
+function filterAndShowPokemon(filterWord) {
+  currentPokemons = pokemonArray.filter(pokemon => pokemon.name.toLowerCase().includes(filterWord.toLowerCase()));
+  renderPokemonCart();
+}
+
+function pokemonNameFilter() {
+  let filterWord = document.getElementById("pokemonNameFilter").value;
+  console.log("Search input changed:", filterWord); // Debugging
+  if (filterWord.length >= 3) {
+    filterAndShowPokemon(filterWord);
+  } else {
+    currentPokemons = pokemonArray;
+    renderPokemonCart();
   }
 }
 
