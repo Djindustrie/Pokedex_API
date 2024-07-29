@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="icon" href="img/icon/pokemon-Loading.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
 </head>
@@ -27,11 +28,11 @@
         <button id="morePokemon" class="morePokemon" onclick="loadMorePokemon()">Load More</button>
     </div>
 
-    <div id="overlay" class="overlay d-none" onclick="toggleOverlay()">
+    <div id="overlay" class="overlay d-none" onclick="closeOverlay()">
     </div>
 
     <div id="loadingSpinner" class="n-none">
-        <div  class="spinner">
+        <div class="spinner">
             <img class="loadingIcon" src="img/gif/Pokemon-Pikach.gif" alt="Loading">
         </div>
     </div>

@@ -109,11 +109,23 @@ function renderPokemonCart() {
     .join("");
 }
 
-function toggleOverlay(index) {
-  let OverlayRef = document.getElementById("overlay");
+function otherCard(index) {
+  if (index < 0 || index >= pokemonArray.length) return;
+  openOverlay(index);
+}
+
+function closeOverlay(){
+  let overlayRef = document.getElementById("overlay");
   let bodyRef = document.getElementById("myBody");
-  OverlayRef.classList.toggle("d-none");
-  bodyRef.classList.toggle("no-scroll");
+  overlayRef.classList.add("d-none");
+  bodyRef.classList.remove("no-scroll");
+}
+
+function openOverlay(index){
+  let overlayRef = document.getElementById("overlay");
+  let bodyRef = document.getElementById("myBody");
+  overlayRef.classList.remove("d-none");
+  bodyRef.classList.add("no-scroll");
 
   if (index < 0 || index >= pokemonArray.length) return;
 
@@ -124,23 +136,11 @@ function toggleOverlay(index) {
   let typesHtmlContent = generateTypesHtml(typesArray);
   let primaryType = type[0];
 
-  OverlayRef.innerHTML = overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats);
+  overlayRef.innerHTML = overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats);
 }
 
 function bubblingProtection(event) {
   event.stopPropagation();
-}
-
-function previousPokemon(index) {
-  if (index > 0) {
-    toggleOverlay(index - 1);
-  }
-}
-
-function nextPokemon(index) {
-  if (index < pokemonArray.length - 1) {
-    toggleOverlay(index + 1);
-  }
 }
 
 function init() {
@@ -155,7 +155,6 @@ function filterAndShowPokemon(filterWord) {
 
 function pokemonNameFilter() {
   let filterWord = document.getElementById("pokemonNameFilter").value;
-  console.log("Search input changed:", filterWord); // Debugging
   if (filterWord.length >= 3) {
     filterAndShowPokemon(filterWord);
   } else {
