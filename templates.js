@@ -1,6 +1,6 @@
 function pokemonCardTemplate(pokemon, index) {
   return `
-    <div class="pokemonCard ${pokemon.type[0]}" onclick="toggleOverlay(${index}, '${pokemon.type[0]}')">
+    <div class="pokemonCard ${pokemon.type[0]}" onclick="toggleOverlay(${index})">
       <div class="pokemonCardUpPart">
         <h2 class="pokedexNumberFont"># ${pokemon.pokedexNumber}</h2>
         <h2 class="h2">${pokemon.name}</h2>
@@ -13,9 +13,17 @@ function pokemonCardTemplate(pokemon, index) {
   `;
 }
 
-function overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats) {
+function overlayPokemonContent(
+  index,
+  pokedexNumber,
+  name,
+  sprite,
+  typesHtmlContent,
+  primaryType,
+  stats
+) {
   return `
-   <div class="overlayContent ${primaryType} onclick="bubblingProtection(event)">
+   <div class="overlayContent ${primaryType}" onclick="bubblingProtection(event)">
       <div class="overlayCardUpPart">
         <h2 class="pokedexNumberFont"># ${pokedexNumber}</h2>
         <h2 class="h2">${name}</h2>
@@ -27,16 +35,20 @@ function overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlCont
         <img src="${sprite}" alt="Pokemon Sprite">
       </div>
       <div class="overlayCardStats typFont">
-        <p>HP: ${stats.hp}</p>
-        <p>Attack: ${stats.attack}</p>
-        <p>Defense: ${stats.defense}</p>
-        <p>Sp Attack: ${stats.specialAttack}</p>
-        <p>Sp Defense: ${stats.specialDefense}</p>
-        <p>Speed: ${stats.speed}</p>
+        <div>
+            <p>HP: ${stats.hp}</p>
+            <p>Attack: ${stats.attack}</p>
+            <p>Defense: ${stats.defense}</p>
+            <p>Sp Attack: ${stats.specialAttack}</p>
+            <p>Sp Defense: ${stats.specialDefense}</p>
+            <p>Speed: ${stats.speed}</p>
+          </div>
+        <div>
+        </div>
       </div>
     </div>
     <div class="overlayNavigation">
-      <button onclick="toggleOverlay(${index - 1},'${primaryType}')">Previous</button>
-      <button onclick="toggleOverlay(${index + 1}, '${primaryType}')">Next</button>
+      <button class="buttonOverlayCart typFont" onclick="toggleOverlay(${index - 1})">Previous</button>
+      <button class="buttonOverlayCart typFont" onclick="toggleOverlay(${index + 1})">Next</button>
     </div>`;
 }

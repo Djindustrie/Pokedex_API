@@ -24,15 +24,22 @@
 
     <div class="basisContener">
         <div id="pokemonCard" class="contentBasis"></div>
-        <button class="morePokemon" onclick="loadMorePokemon()">Load More</button>
+        <button id="morePokemon" class="morePokemon" onclick="loadMorePokemon()">Load More</button>
     </div>
 
     <div id="overlay" class="overlay d-none" onclick="toggleOverlay()">
     </div>
 
+    <div id="loadingSpinner" class="n-none">
+        <div  class="spinner">
+            <img class="loadingIcon" src="img/gif/Pokemon-Pikach.gif" alt="Loading">
+        </div>
+    </div>
+
     <footer>
         <h2 class="h2">Presented by <br>Djindustrie</h2>
     </footer>
+
 </body>
 <script src="templates.js"></script>
 <script src="script.js"></script>

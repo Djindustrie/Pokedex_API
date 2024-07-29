@@ -5,11 +5,13 @@ let limit = 0;
 let endPoint = 0;
 
 async function getContent() {
+  showLoadingSpinner();
   let response = await fetch(url);
   let responseAsJson = await response.json();
   let results = responseAsJson["results"];
   endPoint += 20;
   await processPokemonData(results);
+  hideLoadingSpinner();
 }
 
 async function processPokemonData(results) {
@@ -116,7 +118,7 @@ function toggleOverlay(index) {
   if (index < 0 || index >= pokemonArray.length) return;
 
   const pokemon = pokemonArray[index];
-  const { pokedexNumber, name, sprite, typesHtml, type, stats } = pokemon;
+  const {pokedexNumber, name, sprite, type, stats } = pokemon;
 
   let typesArray = type.join(',').split(',');
   let typesHtmlContent = generateTypesHtml(typesArray);
@@ -162,7 +164,21 @@ function pokemonNameFilter() {
   }
 }
 
+function showLoadingSpinner() {
+  document.getElementById("loadingSpinner").classList.remove("d-none");
+}
+
+function hideLoadingSpinner() {
+  document.getElementById("loadingSpinner").classList.add("d-none");
+  let bodyRef = document.getElementById("myBody");
+  bodyRef.classList.remove("no-scroll");
+  document.getElementById('morePokemon').disabled = false;
+}
+
 function loadMorePokemon() {
   limit += 20;
+  let bodyRef = document.getElementById("myBody");
+  bodyRef.classList.add("no-scroll");
+  document.getElementById('morePokemon').disabled = true;
   getContent();
 }
