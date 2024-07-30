@@ -126,17 +126,21 @@ function openOverlay(index){
   let bodyRef = document.getElementById("myBody");
   overlayRef.classList.remove("d-none");
   bodyRef.classList.add("no-scroll");
-
-  if (index < 0 || index >= pokemonArray.length) return;
-
   const pokemon = pokemonArray[index];
   const {pokedexNumber, name, sprite, type, stats } = pokemon;
-
   let typesArray = type.join(',').split(',');
   let typesHtmlContent = generateTypesHtml(typesArray);
   let primaryType = type[0];
-
   overlayRef.innerHTML = overlayPokemonContent(index, pokedexNumber, name, sprite, typesHtmlContent, primaryType, stats);
+
+  if (index === 0) {
+    let previousContent = document.getElementById("previous");
+    previousContent.classList.add('previousBackgrund')
+  }
+ if (index >= pokemonArray.length -1) {
+  let nextContent = document.getElementById("next");
+  nextContent.classList.add('previousBackgrund')
+ }
 }
 
 function bubblingProtection(event) {

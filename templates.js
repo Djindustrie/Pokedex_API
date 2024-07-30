@@ -44,14 +44,14 @@ function overlayPokemonContent(
             <p>Speed: ${stats.speed}</p>
         </div>
         <div class="overlayNavigation">
-          <button class="buttonOverlayCart typFont" onclick="otherCard(${
+          <button id="previous" class="buttonOverlayCart typFont" onclick="otherCard(${
             index - 1
           })">Previous</button>
-          <button class="buttonOverlayCart typFont" onclick="otherCard(${
+          <button id="next" class="buttonOverlayCart typFont" onclick="otherCard(${
             index + 1
           })">Next</button>
         </div>
       </div>
     </div>
-`;
+  `;
 }
